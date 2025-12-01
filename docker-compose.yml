@@ -34,6 +34,8 @@ services:
     build:
       context: ./services/rule-processor
     container_name: rule-processor
+    ports:
+      - "8000:8000"
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -41,3 +43,4 @@ services:
       RABBITMQ_HOST: rabbitmq
       RABBITMQ_PORT: 5672
       PYTHON_ENV: development
+      PYTHONUNBUFFERED: 1
